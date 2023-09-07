@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default class YoutubeClient {
   constructor() {
+    // 인스턴스를 생성할때 config 기본값 설정하기
     this.httpClient = axios.create({
       baseURL: "https://www.googleapis.com/youtube/v3",
       params: { key: process.env.REACT_APP_YOUTUBE_API_KEY },
@@ -14,5 +15,9 @@ export default class YoutubeClient {
 
   async videos(params) {
     return this.httpClient.get("videos", params);
+  }
+
+  async channels(params) {
+    return this.httpClient.get("channels", params);
   }
 }
